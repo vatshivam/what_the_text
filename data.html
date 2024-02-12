@@ -21,10 +21,6 @@
 						<div class="inner">
 
 							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
-								</a>
-
 							<!-- Nav -->
 								<nav>
 									<ul>
@@ -49,45 +45,31 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<header>
-								<h1>What The<br />
-								TEXT</h1>
-							</header>
-							<section class="tiles">
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic01.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Introduction</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Data</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Cleaning</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-							</section>
+							<h1>Data</h1>
+							<span class="image main"><img src="images/data-cover.jpg" alt="" /></span>
+							<p>Data is gathered from 3 sources:</p>
+                            <h3>1. Newsapi.org (350 rows)</h3>
+                            <p>This is how raw data looks:</p>
+                            <img src="images/newsapi_raw.png"><br>
+                            <p>After cleaning the data, this is how it looks:</p>
+                            <img src="images/newsapi_cleaned.png"><br>
+                            <p>Feel free to refer the <a href="https://github.com/vatshivam/what_the_text/blob/main/newsapi.org.ipynb">code</a> here.</p>
+
+                            <h3>2. Twitter API (5000 rows)</h3>
+                            <p>The data has 4 labels identiyfing cusomters' experience:</p><br>
+                            <img src="images/labels.png"><br>
+                            <p> This is how raw data looks:</p>
+                            <img src="images/tweet_raw.png"><br>
+                            <p>After cleaning the data, this is how it looks:</p>
+                            <img src="images/tweet_cleaned.png"><br>
+                            <p>Feel free to refer the <a href="https://github.com/vatshivam/what_the_text/blob/main/twitter_data.ipynb">code</a> here.</p>
+
+                            <h3>3. WebScraping (250 rows)</h3>
+                            <p>Data is scraped using beautiful soup from this <a href="https://www.revechat.com/blog/examples-of-excellent-customer-service-in-the-airline-industry/">article</a>. This is how raw data looks:</p>
+                            <img src="images/webscraping_raw.png"><br>
+                            <p>After cleaning the data, this is how it looks:</p>
+                            <img src="images/webscraped_clean.png"><br>
+                            <p>Feel free to refer the <a href="https://github.com/vatshivam/what_the_text/blob/main/web_scraping.ipynb">code</a> here.</p>
 						</div>
 					</div>
 
