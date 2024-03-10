@@ -1,0 +1,124 @@
+---
+title: "Untitled"
+author: "Shivam Vats"
+date: "2024-03-06"
+output: html_document
+---
+
+```{r}
+
+library(viridis)
+library(arules)
+library(TSP)
+library(data.table)
+library(ggplot2)
+library(Matrix)
+library(tcltk)
+library(dplyr)
+library(devtools)
+library(purrr)
+library(tidyr)
+library(arulesViz)
+
+```
+
+```{r}
+setwd("D:/Text Mining/What the text")
+data_csv = read.csv('arm_labelled.csv')
+
+#random sample
+data_csv = data_csv %>% sample_n(100)
+
+#copy of dataframe
+df = data_csv
+
+#remove index column
+df = df[-c(1)]
+
+#remove label from the dataframe
+label =  df[c(ncol(df))]
+df = df[-c(ncol(df))]
+
+#convert into transactions
+trans <- as(as.matrix(df), "transactions")
+
+#removing transactions having less than 2 items
+trans <- trans[rowSums(as(trans, "matrix")) > 1]
+
+arules::inspect(trans)
+```
+
+```{r}
+
+##### Use apriori to get the RULES
+Frules = arules::apriori(trans, parameter = list(support=.1, confidence=.1, minlen=2))
+
+```
+
+```{r}
+
+arules::inspect(Frules)
+
+```
+
+```{r}
+
+## Plot of which items are most frequent
+itemFrequencyPlot(Foods, topN=20, type="absolute")
+
+```
+
+
+```{r}
+
+## Sort rules by a measure such as conf, sup, or lift
+SortedRules <- sort(Frules, by="confidence", decreasing=TRUE)
+inspect(SortedRules[1:10])
+
+```
+
+```{r}
+
+(summary(SortedRules))
+
+```
+
+
+```{r}
+
+## Selecting or targeting specific rules  RHS
+ChocRules <- apriori(data=Foods,parameter = list(supp=.001, conf=.01, minlen=2),
+                     appearance = list(default="lhs", rhs="chocloate"),
+                     control=list(verbose=FALSE))
+ChocRules <- sort(ChocRules, decreasing=TRUE, by="confidence")
+inspect(ChocRules[1:4])
+
+```
+
+```{r}
+
+## Selecting rules with LHS specified
+CarrotRules <- apriori(data=Foods,parameter = list(supp=.001, conf=.01, minlen=2),
+                     appearance = list(default="rhs", lhs="carrot"),
+                     control=list(verbose=FALSE))
+CarrotRules <- sort(CarrotRules, decreasing=TRUE, by="support")
+inspect(CarrotRules[1:4])
+
+```
+
+```{r}
+
+## Visualize
+## tcltk
+
+subrules <- head(sort(SortedRules, by="lift"),10)
+plot(subrules)
+
+```
+
+
+```{r}
+
+plot(subrules, method="graph", engine="htmlwidget")
+
+```

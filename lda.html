@@ -39,40 +39,52 @@
 							<li><a href="introduction.html">Introduction</a></li>
 							<li><a href="data.html">Data</a></li>
 							<li><a href="cleaning.html">Cleaning</a></li>
-							<li><a href="clustering.html">Clustering</a></li>
-							<li><a href="arm.html">ARM</a></li>
-							<li><a href="lda.html">LDA</a></li>
+                            <li><a href="clustering.html">Clustering</a></li>
+                            <li><a href="arm.html">ARM</a></li>
+                            <li><a href="lda.html">LDA</a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Data</h1>
-							<span class="image main"><img src="images/data-cover.jpg" alt="" /></span>
-							<p>Data is gathered from 3 sources:</p>
-                            <h3>1. Newsapi.org (350 rows)</h3>
-                            <p>This is how raw data looks:</p>
-                            <img src="images/newsapi_raw.png"><br>
-                            <p>After cleaning the data, this is how it looks:</p>
-                            <img src="images/newsapi_cleaned.png"><br>
-                            <p>Feel free to refer the <a href="https://github.com/vatshivam/what_the_text/blob/main/newsapi.org.ipynb">code</a> here.</p>
+							<h1>Latent Dirichlet Allocation</h1>
+							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
+                            <br>
+                            <h3>Overview</h3>
+							<p>Topic modeling is a natural language processing (NLP) technique that aims to discover underlying topics or themes present in a collection of text documents.<br>
+                                It is particularly useful for organizing, summarizing, and understanding large textual datasets. One popular method for topic modeling is Latent Dirichlet Allocation (LDA).<br>
+                            </p>
 
-                            <h3>2. Twitter API (5000 rows)</h3>
-                            <p>The data has 4 labels identiyfing cusomters' experience:</p><br>
-                            <img src="images/labels.png"><br>
-                            <p> This is how raw data looks:</p>
-                            <img src="images/tweet_raw.png"><br>
-                            <p>After cleaning the data, this is how it looks:</p>
-                            <img src="images/tweet_cleaned.png"><br>
-                            <p>Feel free to refer the <a href="https://github.com/vatshivam/what_the_text/blob/main/twitter_data.ipynb">code</a> here.</p>
+                            <p>
+                                Topic modelling could help us discover the main topics or themes that customers frequently discuss in their tweets related to air travel.<br>
+                                These topics could include aspects such as flight experiences, customer service, delays, in-flight amenities, booking process, etc.<br>
+                                It could uncover customer preferences by identifying topics related to specific amenities, services, or features that customers value in airlines.
+                            </p>
+                            
+                            <h3>Data Prep</h3>
+                            <p>
+                                A count vectorizer is a common tool used to convert a collection of text documents into a numerical format suitable for machine learning algorithms.<br>
+                                The result of applying a count vectorizer is typically a sparse matrix that represents the word occurrences in the documents. The same technique is used to preprocess tweets data to get:
+                            </p>
 
-                            <h3>3. WebScraping (250 rows)</h3>
-                            <p>Data is scraped using beautiful soup from this <a href="https://www.revechat.com/blog/examples-of-excellent-customer-service-in-the-airline-industry/">article</a>. This is how raw data looks:</p>
-                            <img src="images/webscraping_raw.png"><br>
-                            <p>After cleaning the data, this is how it looks:</p>
-                            <img src="images/webscraped_clean.png"><br>
-                            <p>Feel free to refer the <a href="https://github.com/vatshivam/what_the_text/blob/main/web_scraping.ipynb">code</a> here.</p>
+                            <img src="images/lda_data.png"><br><br>
+
+                            <h3>Code</h3>
+                            <p>Here is the <a href="">code</a> to create count vectorizer data from sentences and then implement LDA on it.</p>
+                            
+                            <h3>Results</h3>
+
+                            <p>Let's take a look at the topics:</p>
+                            <img src="images/topics.png"><br><br>
+
+                            <p>Let's take a look at the word distribution for each topic:</p>
+                            <iframe src="lda_viz.html" title="lda viz" height="1000px" width="1500px"></iframe> 
+
+                            <h3>Conclusion</h3>
+                            <p>
+                                The above analysis is conducted on 4 topics. Out of those, topic number 3 corresponds to the words such as "thank" and "agent". The topic could be correlated with those data points where the customers faced a problem which was then solved by the airlines to maintain customer sentiment. Whereas, topic number 1 corresponds to words such as "flight cancel", "late" indicating negative customer sentiment.  
+                            </p>
 						</div>
 					</div>
 

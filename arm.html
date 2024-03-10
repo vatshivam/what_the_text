@@ -39,40 +39,58 @@
 							<li><a href="introduction.html">Introduction</a></li>
 							<li><a href="data.html">Data</a></li>
 							<li><a href="cleaning.html">Cleaning</a></li>
-							<li><a href="clustering.html">Clustering</a></li>
-							<li><a href="arm.html">ARM</a></li>
-							<li><a href="lda.html">LDA</a></li>
+                            <li><a href="clustering.html">Clustering</a></li>
+                            <li><a href="arm.html">ARM</a></li>
+                            <li><a href="lda.html">LDA</a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Data</h1>
-							<span class="image main"><img src="images/data-cover.jpg" alt="" /></span>
-							<p>Data is gathered from 3 sources:</p>
-                            <h3>1. Newsapi.org (350 rows)</h3>
-                            <p>This is how raw data looks:</p>
-                            <img src="images/newsapi_raw.png"><br>
-                            <p>After cleaning the data, this is how it looks:</p>
-                            <img src="images/newsapi_cleaned.png"><br>
-                            <p>Feel free to refer the <a href="https://github.com/vatshivam/what_the_text/blob/main/newsapi.org.ipynb">code</a> here.</p>
+							<h1>Association Rule Mining</h1>
+							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
+                            <br>
+                            <h3>Overview</h3>
+							<p>The primary goal is to uncover hidden patterns, dependencies, and associations between items, events, or variables<br>
+                               that co-occur frequently in the dataset. This technique is widely used in various domains, including retail, marketing, healthcare, and telecommunications.
+                            </p>
+                            <p>
+                                ARM on customer tweets could uncover understanding of customer sentiments, preferences, and the factors influencing their experiences, leading to more targeted and effective decision-making.<br>
+                                This technique could uncover what kind of words could influence custom experience.
+                            </p>
+                            
+                            <h3>Data Prep</h3>
+                            <p>
+                                ARM typically works with transactional datasets where each record represents a transaction. A transaction is a set of items, events, or attributes<br>
+                                that occur together. For example, in retail, a transaction could be a customer's purchase, and the items purchased are the transaction items.<br>
+                            </p>
 
-                            <h3>2. Twitter API (5000 rows)</h3>
-                            <p>The data has 4 labels identiyfing cusomters' experience:</p><br>
-                            <img src="images/labels.png"><br>
-                            <p> This is how raw data looks:</p>
-                            <img src="images/tweet_raw.png"><br>
-                            <p>After cleaning the data, this is how it looks:</p>
-                            <img src="images/tweet_cleaned.png"><br>
-                            <p>Feel free to refer the <a href="https://github.com/vatshivam/what_the_text/blob/main/twitter_data.ipynb">code</a> here.</p>
+                            <img src="images/arm_data.png"><br><br>
 
-                            <h3>3. WebScraping (250 rows)</h3>
-                            <p>Data is scraped using beautiful soup from this <a href="https://www.revechat.com/blog/examples-of-excellent-customer-service-in-the-airline-industry/">article</a>. This is how raw data looks:</p>
-                            <img src="images/webscraping_raw.png"><br>
-                            <p>After cleaning the data, this is how it looks:</p>
-                            <img src="images/webscraped_clean.png"><br>
-                            <p>Feel free to refer the <a href="https://github.com/vatshivam/what_the_text/blob/main/web_scraping.ipynb">code</a> here.</p>
+                            <h3>Code</h3>
+                            <p>Here is the <a href="">code</a> to create transaction data from tabular data and then implement ARM on it.</p>
+                            
+                            <h3>Results</h3>
+
+                            <p>Let's take a look at the rules order by decresing support:</p>
+                            <img src="images/support.png"><br><br>
+
+                            <p>Let's take a look at the rules order by decresing confidence:</p>
+                            <img src="images/confidence.png"><br><br>
+
+                            <p>Let's take a look at the rules order by decresing lift:</p>
+                            <img src="images/lift.png"><br><br>
+
+                            <p>Network plots are a convenient way to understand these rules. The following plots represent top 5 rules sorted by lift<br>
+                            <img src="images/top5_lift.png"><br><br>
+                              
+                            <p>Addtionally, the top 10 rules sorted by confidence, respectively.</p>
+                            <img src="images/top10_confidence.png"><br><br>
+
+                            <h3>Conclusion</h3>
+                            <p>Words such as "please", "help" and "need" are mostly used together and implies that the customer sentiment is on verge to be negative.<br>
+                               Words such as "wait", "hold" and "hour" were found to be related in top 10 rules sorted by confidence, indicating high cooccurence.</p>
 						</div>
 					</div>
 
