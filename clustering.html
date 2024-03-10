@@ -50,14 +50,26 @@
 						<div class="inner">
 							<h1>Clustering</h1>
 							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
+                            <h3>Overview</h3>
 							<p>Clustering helps in segmenting customers based on their expressed opinions, preferences, or experiences.<br>
                                This segmentation can be valuable for airlines in tailoring their services and communication strategies to different customer groups.<br>
                                Clustering can assist in identifying specific issues or challenges faced by customers.<br>
                                By grouping tweets that discuss similar problems or complaints, airlines can prioritize addressing these issues and improving customer satisfaction.
                             </p>
                             
-                            <h3>Kmeans</h3>
-                            <a href="">Code</a>
+                            <h3>Data Prep</h3>
+
+                            <p>Here is the unlabelled numeric data for clustering:</p>
+                            <img src="images/lda_data.png"><br><br>
+                            <p><a href="https://github.com/vatshivam/what_the_text/blob/main/cleaned_labelled.csv">Link</a> to the data</p>
+
+                            <h3>Code</h3>
+                            <p>Here is the code for <a href="https://github.com/vatshivam/what_the_text/blob/main/clustering.ipynb">Kmeans</a> and the code for <a href="https://github.com/vatshivam/what_the_text/blob/main/Heirarchical_clustering.R">Heirarchical Clustering</a></p>
+
+                            <h3>Results</h3>
+
+                            <h4>Kmeans</h4>
+                            
                             <p>K-means clustering is a popular unsupervised machine learning algorithm used for partitioning a dataset into distinct, non-overlapping groups or clusters. The objective is to group similar data points together while keeping different groups as distinct as possible.<br>
                                 Let's see the result of implementing Kmeans with different number of clusters and compare the results using silouhette score. For simplicity, Kmeans is implemented on a small subset of columns to facilitate viszualization.</p>
                             
@@ -67,8 +79,8 @@
                             
                             <p>From the above results, we could conclude that 3 clusters is the best possible way of grouping the data, with respect to the improvement in silouhette score while increasing the number of clusters.</p>
 
-                            <h3>Heirarchical Clustering</h3>
-                            <a href="">Code</a>
+                            <h4>Heirarchical Clustering</h4>
+                            
                             <p>
                                 Hierarchical clustering is another clustering technique that organizes data points into a hierarchy of clusters,<br>
                                 forming a tree-like structure known as a dendrogram. This method is particularly useful for exploring the relationships and hierarchy within the data.<br>
