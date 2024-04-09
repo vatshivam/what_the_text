@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>What-The-Text</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="introduction.html">Introduction</a></li>
+							<li><a href="data.html">Data</a></li>
+							<li><a href="cleaning.html">Cleaning</a></li>
+                            <li><a href="clustering.html">Clustering</a></li>
+                            <li><a href="arm.html">ARM</a></li>
+                            <li><a href="lda.html">LDA</a></li>
+                            <li><a href="naivebayes.html">Naive Bayes</a></li>
+                            <li><a href="dt.html">Decision Tree</a></li>
+                            <li><a href="svm.html">Support Vector Machines</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Decision Trees</h1>
+							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
+                            <br>
+                            <h3>Overview</h3>
+							<p>Decision trees provide a clear and interpretable representation of the classification process. The rules learned by the decision tree algorithm can be easily understood by humans, making it easier to interpret why certain decisions are made.<br>
+                               This algorithm is capable of capturing nonlinear relationships between features and the target variable. In text classification, where the relationship between words or phrases and class labels may be complex and nonlinear, decision trees can effectively model these relationships. Decision trees do not make any assumptions about the distribution of the data, making them suitable for a wide range of text classification tasks. They can handle both numerical and categorical features, making them versatile for text data with different types of features.<br>
+                               In addition to that, it provides a measure of feature importance, which indicates the relevance of each feature in the classification process. This can be useful for feature selection and understanding which words or phrases are most predictive of certain class labels in text classification tasks. 
+                            </p>
+
+                            <p>
+                                Decision trees can handle missing values in the data without the need for imputation techniques. In text classification, where some documents may have missing or incomplete text data, decision trees can still make accurate predictions by effectively handling missing values.<br>
+                                They are relatively efficient and can handle large datasets with moderate computational resources. In text classification tasks with a large number of documents or features, decision trees can provide a scalable solution for classification.<br>
+                                Last but not the least, decision trees are robust to irrelevant features in the data. They can automatically select the most relevant features for classification, ignoring irrelevant features that may not contribute to the predictive power of the model. In text classification, where the presence of irrelevant words or phrases is common, this can help improve the efficiency and effectiveness of the classification process.
+                            </p>
+                            
+                            <h3>Data Prep</h3>
+                            <p>
+                                To split data into training and testing sets without any overlap, you can use the train_test_split function from the scikit-learn library in Python. It internally handles choosing datapoints without replacement, making sure that there are no common data points between training and testing set.<br>
+                                Naive Bayes in python requires all the features to be in numeric form. Here is the sample input dataset:
+                            </p>
+
+                            <img src="images/numeric_data.png"><br><br>
+                            <p><a href="https://github.com/vatshivam/what_the_text/blob/main/numeric_data.csv">Link</a> to the data</p>
+
+                            <p>Applying train test split divide the data and labels into training and testing sets.</p>
+                            
+                            <h4>X_train</h4>
+                            <img src="images/X_train.png"><br><br>
+
+                            <h4>X_test</h4>
+                            <img src="images/X_test.png"><br><br>
+
+                            <h4>Y_train and Y_test</h4>
+                            <img src="images/y_train_test.png"><br><br>
+
+                            <h3>Code</h3>
+                            <p>Here is the <a href="https://github.com/vatshivam/what_the_text/blob/main/Decision Tree.ipynb">code</a> to implement Decision Tree algorithm.</p>
+                            
+                            <h3>Results</h3>
+                            <p>Let's take a look at different trees and their structures as a result of implementing this algorithm on our dataset.</p>
+
+                            <p>Tree 1</p>
+                            <img src="images/tree_2.png"><br><br>
+
+                            <p>Tree 2</p>
+                            <img src="images/tree_1.png"><br><br>
+
+                            <p>Tree 3</p>
+                            <img src="images/tree_3.png"><br><br>
+
+                            <p>Tree 4</p>
+                            <img src="images/tree_general.png"><br><br>
+
+                            <p>Let's take a look at the classification metrics for these trees</p>
+                            
+                            <p>Tree 1</p>
+                            <img src="images/tree_2_cm.png"><br><br>
+                            <img src="images/tree_2_cr.png"><br><br>
+
+                            <p>Tree 2</p>
+                            <img src="images/tree_1_cm.png"><br><br>
+                            <img src="images/tree_1_cr.png"><br><br>
+
+                            <p>Tree 3</p>
+                            <img src="images/tree_3_cm.png"><br><br>
+                            <img src="images/tree_3_cr.png"><br><br>
+
+                            <p>Tree 4</p>
+                            <img src="images/tree_general_cm.png"><br><br>
+                            <img src="images/tree_general_cr.png"><br><br>
+
+                            <h3>Conclusion</h3>
+                            <p>
+                                Starting from tree1 till tree4, the complexity of the tree increased, which was in conjunction to the improvement in classification metrics for the four trees one after the other.<br>
+                                The first three trees are biased and underfit the data. Tree4 did a better job in learning the complexity of the feature interations and it was reflected in the classification scores.<br>
+                                Since Decision trees do not assume feature independence, it could learn and uncover complex relationships between features, and as a result of that, it gave better results than naive bayes.
+                            </p>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

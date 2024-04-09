@@ -42,52 +42,64 @@
                             <li><a href="clustering.html">Clustering</a></li>
                             <li><a href="arm.html">ARM</a></li>
                             <li><a href="lda.html">LDA</a></li>
-							<li><a href="naivebayes.html">Naive Bayes</a></li>
+                            <li><a href="naivebayes.html">Naive Bayes</a></li>
                             <li><a href="dt.html">Decision Tree</a></li>
-							<li><a href="svm.html">Support Vector Machines</a></li>
+                            <li><a href="svm.html">Support Vector Machines</a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Latent Dirichlet Allocation</h1>
+							<h1>Naive Bayes</h1>
 							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
                             <br>
                             <h3>Overview</h3>
-							<p>Topic modeling is a natural language processing (NLP) technique that aims to discover underlying topics or themes present in a collection of text documents.<br>
-                                It is particularly useful for organizing, summarizing, and understanding large textual datasets. One popular method for topic modeling is Latent Dirichlet Allocation (LDA).<br>
+							<p>Naïve Bayes methods are a set of supervised learning algorithms based on applying Bayes' theorem with the "naïve" assumption of conditional independence between every pair of features given the value of the class variable.<br>
+                                Text data often results in high-dimensional feature spaces, where the number of features (words or terms) can be very large. Naive Bayes classifiers perform well in such high-dimensional spaces and are not affected by the curse of dimensionality as much as other algorithms. This is one of the greatest strengths of this algorithm.<br>
                             </p>
 
                             <p>
-                                Topic modelling could help us discover the main topics or themes that customers frequently discuss in their tweets related to air travel.<br>
-                                These topics could include aspects such as flight experiences, customer service, delays, in-flight amenities, booking process, etc.<br>
-                                It could uncover customer preferences by identifying topics related to specific amenities, services, or features that customers value in airlines.
+                                Naive Bayes classifiers can still perform well even when the training dataset is small. This makes them suitable for tasks where labeled data is limited, which is often the case in text classification problems.<br>
+                                Despite its "naive" assumption of feature independence, Naive Bayes can still perform surprisingly well in practice. In text classification tasks, where the independence assumption might not hold true for all features, Naive Bayes can still produce reasonable results by effectively filtering out irrelevant features.<br>
+                                Naive Bayes classifiers provide straightforward probabilities for class membership, making it easy to interpret their predictions. This interpretability can be valuable in applications where understanding the reasoning behind predictions is essential. In addition, Naive Bayes classifiers are robust to irrelevant features and noisy data. This is particularly advantageous in text classification tasks where the presence of irrelevant words or noise is common.
                             </p>
                             
                             <h3>Data Prep</h3>
                             <p>
-                                A count vectorizer is a common tool used to convert a collection of text documents into a numerical format suitable for machine learning algorithms.<br>
-                                The result of applying a count vectorizer is typically a sparse matrix that represents the word occurrences in the documents. The same technique is used to preprocess tweets data to get:
+                                To split data into training and testing sets without any overlap, you can use the train_test_split function from the scikit-learn library in Python. It internally handles choosing datapoints without replacement, making sure that there are no common data points between training and testing set.<br>
+                                Naive Bayes in python requires all the features to be in numeric form. Here is the sample input dataset:
                             </p>
 
-                            <img src="images/lda_data.png"><br><br>
-                            <p><a href="https://github.com/vatshivam/what_the_text/blob/main/arm_labelled.csv">Link</a> to the data</p>
+                            <img src="images/numeric_data.png"><br><br>
+                            <p><a href="https://github.com/vatshivam/what_the_text/blob/main/numeric_data.csv">Link</a> to the data</p>
+
+                            <p>Applying train test split divide the data and labels into training and testing sets.</p>
+                            
+                            <h4>X_train</h4>
+                            <img src="images/X_train.png"><br><br>
+
+                            <h4>X_test</h4>
+                            <img src="images/X_test.png"><br><br>
+
+                            <h4>Y_train and Y_test</h4>
+                            <img src="images/y_train_test.png"><br><br>
 
                             <h3>Code</h3>
-                            <p>Here is the <a href="https://github.com/vatshivam/what_the_text/blob/main/lda.html">code</a> to create count vectorizer data from sentences and then implement LDA on it.</p>
+                            <p>Here is the <a href="https://github.com/vatshivam/what_the_text/blob/main/Naive Bayes.ipynb">code</a> to implement Naive Bayes algorithm.</p>
                             
                             <h3>Results</h3>
 
-                            <p>Let's take a look at the topics:</p>
-                            <img src="images/topics.png"><br><br>
+                            <p>Let's take a look at the Confusion Matrix</p>
+                            <img src="images/CM_NB.png"><br><br>
 
-                            <p>Let's take a look at the word distribution for each topic:</p>
-                            <iframe src="lda_viz.html" title="lda viz" height="1000px" width="1500px"></iframe> 
+                            <p>Let's take a look at the classification metrics:</p>
+                            <img src="images/CM_NB.png"><br><br>
 
                             <h3>Conclusion</h3>
                             <p>
-                                The above analysis is conducted on 4 topics. Out of those, topic number 3 corresponds to the words such as "thank" and "agent". The topic could be correlated with those data points where the customers faced a problem which was then solved by the airlines to maintain customer sentiment. Whereas, topic number 1 corresponds to words such as "flight cancel", "late" indicating negative customer sentiment.  
+                                From the classificaiton report we could see that for the class "good", the accuracy was decent despite the fact that test set had minimum number of samples for that particular class.<br>
+                                This is in conjunction to the fact that naive bayes performs well for those datasets, which have less number of data points. Overall accuracy of the classifier could be further improved using hyperparameter tuning.
                             </p>
 						</div>
 					</div>

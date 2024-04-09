@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r}
-
+options(knitr.table.format = "html", knitr.table.max.rows = 15)
 library(viridis)
 library(arules)
 library(TSP)
@@ -27,13 +27,15 @@ setwd("D:/Text Mining/What the text")
 data_csv = read.csv('arm_labelled.csv')
 
 #random sample
-data_csv = data_csv %>% sample_n(100)
+data_csv = data_csv %>% sample_n(2000)
 
 #copy of dataframe
 df = data_csv
 
 #remove index column
 df = df[-c(1)]
+
+df = df[!names(df) %in% "flight"]
 
 #remove label from the dataframe
 label =  df[c(ncol(df))]
@@ -51,20 +53,20 @@ arules::inspect(trans)
 ```{r}
 
 ##### Use apriori to get the RULES
-Frules = arules::apriori(trans, parameter = list(support=.1, confidence=.1, minlen=2))
-
-```
-
-```{r}
-
+Frules = arules::apriori(trans, parameter = list(support=.018, confidence=.1, minlen=2))
 arules::inspect(Frules)
 
 ```
 
 ```{r}
 
+
+```
+
+```{r}
+
 ## Plot of which items are most frequent
-itemFrequencyPlot(Foods, topN=20, type="absolute")
+itemFrequencyPlot(trans, topN=20, type="absolute")
 
 ```
 
@@ -72,8 +74,8 @@ itemFrequencyPlot(Foods, topN=20, type="absolute")
 ```{r}
 
 ## Sort rules by a measure such as conf, sup, or lift
-SortedRules <- sort(Frules, by="confidence", decreasing=TRUE)
-inspect(SortedRules[1:10])
+SortedRules <- sort(Frules, by="lift", decreasing=TRUE)
+arules::inspect(SortedRules[1:15])
 
 ```
 
@@ -111,7 +113,7 @@ inspect(CarrotRules[1:4])
 ## Visualize
 ## tcltk
 
-subrules <- head(sort(SortedRules, by="lift"),10)
+subrules <- head(sort(SortedRules, by="confidence"),10)
 plot(subrules)
 
 ```
