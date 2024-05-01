@@ -23,11 +23,11 @@ library(arulesViz)
 ```
 
 ```{r}
-setwd("D:/Text Mining/What the text")
-data_csv = read.csv('arm_labelled.csv')
+# setwd("D:/Text Mining/")
+data_csv = read.csv('D:/Text Mining/df2.csv')
 
 #random sample
-data_csv = data_csv %>% sample_n(2000)
+# data_csv = data_csv %>% sample_n(2000)
 
 #copy of dataframe
 df = data_csv
@@ -35,31 +35,46 @@ df = data_csv
 #remove index column
 df = df[-c(1)]
 
-df = df[!names(df) %in% "flight"]
+# df = df[!names(df) %in% "flight"]
+
+
+df_pos = df %>%
+  filter(label == "pos")
+
+df_neg = df %>%
+  filter(label == "neg")
 
 #remove label from the dataframe
-label =  df[c(ncol(df))]
-df = df[-c(ncol(df))]
+df_pos = df_pos[-c(ncol(df_pos))]
+df_neg = df_neg[-c(ncol(df_neg))]
 
 #convert into transactions
-trans <- as(as.matrix(df), "transactions")
+trans_pos <- as(as.matrix(df_pos), "transactions")
+trans_neg <- as(as.matrix(df_neg), "transactions")
+
 
 #removing transactions having less than 2 items
-trans <- trans[rowSums(as(trans, "matrix")) > 1]
+trans_pos <- trans_pos[rowSums(as(trans_pos, "matrix")) > 1]
+trans_neg <- trans_neg[rowSums(as(trans_neg, "matrix")) > 1]
 
-arules::inspect(trans)
+
+# arules::inspect(trans_pos)
+# arules::inspect(trans_neg)
 ```
 
 ```{r}
 
 ##### Use apriori to get the RULES
-Frules = arules::apriori(trans, parameter = list(support=.018, confidence=.1, minlen=2))
-arules::inspect(Frules)
+Frules = arules::apriori(trans_pos, parameter = list(support=.45, confidence=.1, minlen=2))
+SortedRules <- sort(Frules, by="lift", decreasing=TRUE)
+arules::inspect(SortedRules)
 
 ```
 
 ```{r}
-
+Frules = arules::apriori(trans_neg, parameter = list(support=.5, confidence=.1, minlen=2))
+SortedRules <- sort(Frules, by="lift", decreasing=TRUE)
+arules::inspect(SortedRules)
 
 ```
 

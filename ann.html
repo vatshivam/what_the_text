@@ -53,24 +53,15 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Support Vector Machines</h1>
+							<h1>Artificial Neural Networks</h1>
 							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
                             <br>
                             <h3>Overview</h3>
-							<p>Support Vector Machine (SVM) is a supervised machine learning algorithm used for classification and regression tasks.<br>
-                                It is particularly well-suited for classification tasks and has been widely used in various domains, including text classification, image recognition, and bioinformatics.<br>
-                                At its core, SVM aims to find the optimal hyperplane that separates data points of different classes with the maximum margin. 
+							<p>Artificial Neural Networks (ANNs) are a class of machine learning models inspired by the structure and function of biological neural networks in the human brain. ANNs consist of interconnected nodes (neurons) organized in layers, where each neuron receives inputs, applies a transformation (activation function), and produces an output that is transmitted to neurons in the next layer. ANNs are capable of learning complex patterns and relationships from data through a process called training, where the model adjusts its internal parameters (weights and biases) based on examples from a labeled dataset.
                             </p>
 
                             <p>
-                                SVM can handle nonlinear relationships between features and class labels by mapping the input data into a higher-dimensional feature space using kernel functions.<br>
-                                Common kernel functions include linear, polynomial, and radial basis function (RBF). The kernel trick allows SVM to find nonlinear decision boundaries in the original feature space without explicitly computing the transformed feature space.<br>
-                            </p>
-
-                            <p>
-                                SVMs work well in high-dimensional spaces, making them suitable for text classification tasks where each word or term represents a feature. Text data is typically high-dimensional due to the large number of unique words or terms, and SVMs can effectively separate data points in such spaces.<br>
-                                SVMs can efficiently handle nonlinear relationships between features and class labels using different kernel functions (e.g., linear, polynomial, radial basis function). This flexibility allows SVMs to capture complex patterns and decision boundaries in text data, leading to accurate classification.<br>
-                                SVMs typically rely only on a subset of training examples (support vectors) to define the decision boundary. This property makes SVMs memory-efficient, especially in text classification tasks with large datasets, where only a small fraction of training examples may be relevant for defining the decision boundary.
+                                In sentiment analysis, ANNs can be used to automatically determine the sentiment expressed in a piece of text, such as a customer review or a tweet. The input data (text) needs to be converted into a numerical representation that ANNs can process. This often involves techniques like word embedding, where words are mapped to high-dimensional vectors, capturing semantic relationships between words. When designing an ANN architecture for sentiment analysis, several options are available. For instance, Feedforward Neural Networks (FNNs) are the simplest form of ANNs, consisting of input, hidden, and output layers. Recurrent Neural Networks (RNNs) are suitable for sequential data like text, as they can capture temporal dependencies. Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU) are variants of RNNs designed to address issues like the vanishing gradient problem and capture long-range dependencies.
                             </p>
                             
                             <h3>Data Prep</h3>
@@ -91,32 +82,33 @@
                             <img src="images/X_test.png"><br><br>
 
                             <h4>Y_train and Y_test</h4>
-                            <img src="images/y_train_test.png"><br><br>
+                            <img src="images/ANN_y_data.png"><br><br>
 
                             <h3>Code</h3>
-                            <p>Here is the <a href="https://github.com/vatshivam/what_the_text/blob/main/SVM.ipynb">code</a> to implement SVM classifier</p>
+                            <p>Here is the <a href="https://github.com/vatshivam/what_the_text/blob/main/ANN.ipynb">code</a> to implement ANN.</p>
                             
+                            <h3>Model</h3>
+                            <p>Here is the architecture of the model used for training:</p>
+                            <img src="images/model.png"><br><br>
+
                             <h3>Results</h3>
+                            <p>Let's take a look at resulting loss and accuracy after implementing this algorithm on our dataset.</p>
 
-                            <p>Let's take a look at the classification metrics for different kernels, when used with the text dataset.</p>
-                            
-                            <p>RBF</p>
-                            <img src="images/rbf_cm.png"><br><br>
-                            <img src="images/rbf_cr.png"><br><br>
+                            <h4>Loss</h4>
+                            <img src="images/Loss_Ann.png"><br><br>
 
-                            <p>Polynomial</p>
-                            <img src="images/poly_cm.png"><br><br>
-                            <img src="images/poly_cr.png"><br><br>
+                            <h4>Accuracy</h4>
+                            <img src="images/Metrics_Ann.png"><br><br>
 
-                            <p>Sigmoid</p>
-                            <img src="images/sigmoid_cm.png"><br><br>
-                            <img src="images/sigmoid_cr.png"><br><br>
+                            <p>Let's take a look at the classification metrics for this model</p>
+
+                            <img src="images/ann_cm.png"><br><br>
+                            <img src="images/ann_cr.png"><br><br>
 
                             <h3>Conclusion</h3>
                             <p>
-                                RBF outperformed the rest of the two kernels for this dataset. In addition to that, RBF kernel was able to acheive a higher accuracy for minority class, as compared to the other kernels.<br>
-                                In addition to that, SVM performed better than naive bayes and decision trees overall.  Since the dataset has well-separated classes, SVMs outperformed Decision Trees and Naive Bayes, which do not explicitly optimize for margin maximization.<br>
-                                SVMs make fewer assumptions about the underlying data distribution compared to Naive Bayes, which assumes feature independence, and Decision Trees, which may suffer from bias towards dominant features or classes.
+                                Even though ANN bears great capability of learning complex decision boundaries, proper architecture and hyperparameter tuning is a must to achieve optimal performance<br>
+                                This ANN model performed almost same as the rest of the algorithms. This could be attributed to the fact that the network might be biased due to lack to training iterations.<br>
                             </p>
 						</div>
 					</div>
